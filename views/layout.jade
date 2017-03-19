@@ -1,6 +1,9 @@
 doctype html
 html
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
   body
@@ -17,15 +20,18 @@ html
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              a(href='#')
-                | Home
-                span.sr-only (current)
             li
-              a(href='#') About
+              a(href='/') Home
+            li
+              a(href='/users') Users
         // /.navbar-collapse
       // /.container-fluid
 
     .container
       block content
-      script(src='/javascripts/bootstrap.min.js')
+      
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script.
+          $('.active').removeClass('active');
+          $('li a[href=\\' + window.location.pathname + ']').parent().addClass('active');
